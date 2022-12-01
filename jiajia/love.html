@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>就是爱你呀</title>
+</head>
+<style>
+    *{ margin: 0;padding: 0;list-style: none; text-align: center;}
+    h1{
+        width: 100%;
+        position: fixed;
+        left: 0;
+        top: 0;
+        line-height: 56px;
+        box-shadow: 0 6px 4px #ccc;
+        background: #fff;
+    }
+    h2{
+        padding-top: 66px;
+    }
+    img{
+        display: block;
+        margin: 14px auto 0;
+        max-width: 200px;
+    }
+    .btn{
+        width: 100%;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+    }
+    .btn div{
+        height: 36px;
+        color: #fff;
+        line-height: 36px;
+        border-radius: 6px;
+        margin: 6px auto 0;
+        cursor: pointer;
+    }
+    .refuse{
+        width: 60px;
+        background: #ed4014;
+    }
+    .together{
+        width: 100px;
+        background: #2b85e4;
+    }
+    .item9 {
+        width: 300px;
+        margin: 20px auto 0;
+        padding-top: 120px;
+        background: linear-gradient(to left, #2CD5FF, #2CD5FF) left top no-repeat,
+        linear-gradient(to bottom, #2CD5FF, #2CD5FF) left top no-repeat,
+        linear-gradient(to left, #2CD5FF, #2CD5FF) right top no-repeat,
+        linear-gradient(to bottom, #2CD5FF, #2CD5FF) right top no-repeat,
+        linear-gradient(to left, #2CD5FF, #2CD5FF) left bottom no-repeat,
+        linear-gradient(to bottom, #2CD5FF, #2CD5FF) left bottom no-repeat,
+        linear-gradient(to left, #2CD5FF, #2CD5FF) right bottom no-repeat,
+        linear-gradient(to left, #2CD5FF, #2CD5FF) right bottom no-repeat;
+        background-size: 4px 20px, 20px 4px, 4px 20px, 20px 4px;
+        border: 1px solid #073F97;
+        position: relative;
+    }
+    .item9 span {
+        display: inline-block;
+        width: 35%;
+        background:#05286C;
+        font-size: 14px;
+        position: absolute;
+        top: 0;
+        left: 32%;
+        padding: 4px 0px;
+        color: #19E8FE;
+        border-radius: 0 0 10px 10px;
+    }
+    .error_list{
+        width: 500px;
+        margin: 20px auto;
+        color: #333;
+        line-height: 36px;
+        border: 10px double #FF9999;
+        border-radius: 8px;
+        padding: 14px;
+        display: none;
+    }
+    .error_list img{
+        width: 180px;
+        margin: 0 auto;
+    }
+    .mask{
+        width: 100%;
+        height: 100%;
+        position: fixed;
+        left: 0;
+        top: 0;
+        background: rgba(0,0,0,.7);
+        color: #fff;
+        display: none;
+        font-size: 26px;
+    }
+    .mask div{
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        /* co1umn 从上到下*/
+        align-items: center;
+        /* center代表水平方向 */
+        justify-content: center;
+    }
+    .mask div strong{
+        display: block;
+        width: 100%;
+    }
+</style>
+<!-- <body onclick="mp3.play()"> -->
+<body onclick="mp3.play()">
+    <h1></h1>
+    <h2>佳佳，每天清晨醒来你和阳光都在那就是我想要的未来！</h2>
+    <img src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Ftva3.sinaimg.cn%2Flarge%2F006I1bcHly1fkvmlmke9wj30ku0kuwgi.jpg&refer=http%3A%2F%2Ftva3.sinaimg.cn&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1672460440&t=4ca404bf019a0657afffd9d5714353d3" alt="">
+    <div class="error_list"></div>
+    <div class="item9">
+        <span>love</span>
+        <div style="margin-top:-68px;"><strong>所以你可以答应和我一直在一起吗</strong> </div>
+        <div class="btn">
+            <div class="refuse" id="refuse">拒绝</div>
+            <div class="together" id="together">永远在一起</div>
+        </div>
+    </div>
+    <div class="mask">
+        <div class="mask_con"></div>
+    </div>
+</body>
+<script>
+    let arr = [
+        {   text:"遇上你的感觉，大概是走了很久的路，终于到家了!",
+            imgUrl:'https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fc-ssl.duitang.com%2Fuploads%2Fitem%2F202102%2F25%2F20210225112650_ggrli.thumb.1000_0.jpg&refer=http%3A%2F%2Fc-ssl.duitang.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1672457718&t=c5c4c1cfc8c705879b78569d4515b81e',
+            error:'https://gimg2.baidu.com/image_search/src=http%3A%2F%2Finews.gtimg.com%2Fnewsapp_bt%2F0%2F14249764924%2F1000&refer=http%3A%2F%2Finews.gtimg.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1672458501&t=caf9878e2382633f063e6a38cd94ca1a'
+        },
+        {   text:"我虽然不善言辞，但关于爱你，我无法掩饰!",
+            imgUrl:'https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fc-ssl.duitang.com%2Fuploads%2Fblog%2F202203%2F22%2F20220322195437_9235a.thumb.1000_0.jpg&refer=http%3A%2F%2Fc-ssl.duitang.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1672457718&t=eca62d022b3f137a8e6193dec3f9eb39',
+            error: 'https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fimg1.doubanio.com%2Fview%2Fgroup_topic%2Fl%2Fpublic%2Fp421099577.jpg&refer=http%3A%2F%2Fimg1.doubanio.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1672458604&t=760a33bbcc69a2a3c946c86cb49f2e3c'
+        },
+        {   text:"对你迁就一生，是我能给你的，蕞好的聘礼!",
+            imgUrl:'https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fp4.itc.cn%2Fq_70%2Fimages03%2F20210101%2F14974a99c5c840468ff5fc7fbaf686f8.jpeg&refer=http%3A%2F%2Fp4.itc.cn&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1672457718&t=0df206d2166b6f5c3e8fb744c22d0550',
+            error:'https://gimg2.baidu.com/image_search/src=http%3A%2F%2Finews.gtimg.com%2Fnewsapp_bt%2F0%2F13236613600%2F1000&refer=http%3A%2F%2Finews.gtimg.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1672458604&t=f2085c4d8bf2fb64acf017fef3cdf531'
+        },
+        {   text:"你一个不经意的笑容，就温暖了我整个世界!",
+            imgUrl:'https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fc-ssl.duitang.com%2Fuploads%2Fitem%2F202003%2F11%2F20200311145914_vmvre.thumb.1000_0.jpg&refer=http%3A%2F%2Fc-ssl.duitang.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1672457718&t=a1cdc1ed591698a8445741cf757bffd9',
+            error:'https://pics2.baidu.com/feed/9922720e0cf3d7ca6172050441f8db016a63a92f.jpeg?token=2913fbf1656a4c75b2d255f2b88f0206'
+        },
+        {   text:"我没有取悦你的天分，但我比谁都认真。",
+            imgUrl:'https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fci.xiaohongshu.com%2Ff5e9764a-bdd0-f737-472d-30e9588edff4%3FimageView2%2F2%2Fw%2F1080%2Fformat%2Fjpg&refer=http%3A%2F%2Fci.xiaohongshu.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1672457718&t=0115241f9ccc3de838f0e58ed3f8c00a',
+            error:'https://gimg2.baidu.com/image_search/src=http%3A%2F%2Ftva1.sinaimg.cn%2Flarge%2F006mowZngy1ftujvuhgl1j30m80m8q47.jpg&refer=http%3A%2F%2Ftva1.sinaimg.cn&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1672458637&t=3286c42adfe6b5da1618de61b10a5c01'
+        },
+        {   text:"我想有一天，你做饭，我捣乱。",
+            imgUrl:'https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fc-ssl.duitang.com%2Fuploads%2Fitem%2F202002%2F03%2F20200203012350_WPKsk.thumb.1000_0.jpeg&refer=http%3A%2F%2Fc-ssl.duitang.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1672457718&t=481aab8bd0041cc4f5367ed372525605',
+            error:'https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fbpic.588ku.com%2Felement_origin_min_pic%2F20%2F10%2F22%2F2508fa8b2e5f2ae286a57447b25cabc1.jpg&refer=http%3A%2F%2Fbpic.588ku.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1672458689&t=f74f46ec9dc4f424d57eaa4cae3137b3'
+        },
+        {
+            text:"连我都羡慕，你在我心里的位置!",
+            imgUrl:'https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fimg.soogif.com%2FSFaaxJakbABAX2tG0XY0MU8iIPSvkJk6.jpg_jpg&refer=http%3A%2F%2Fimg.soogif.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1672457718&t=72198ffb3971db4fb514676e578cbe6c',
+            error:'https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fpic.90sheji.com%2Foriginal_origin_pic%2F18%2F06%2F11%2F86c82abde390bfb852d27b1bc40e16aa.png%21%2Ffw%2F315%2Fquality%2F90%2Funsharp%2Ftrue%2Fcompress%2Ftrue%2Fcanvas%2F315x315a0a0%2Fcvscolor%2FFFFFFFFF&refer=http%3A%2F%2Fpic.90sheji.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1672458689&t=f9bfaff4b6d40006a469b824ff328962'
+        },
+        {   text:"喜欢是选择，爱是非你不可!",
+            imgUrl:'https://gimg2.baidu.com/image_search/src=http%3A%2F%2Finews.gtimg.com%2Fnewsapp_bt%2F0%2F14486727430%2F1000&refer=http%3A%2F%2Finews.gtimg.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1672457718&t=0e20f5d276f40b58b432df6036fd8675',
+            error:'https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fc-ssl.duitang.com%2Fuploads%2Fitem%2F202010%2F18%2F20201018124854_Sy8Fa.thumb.1000_0.jpeg&refer=http%3A%2F%2Fc-ssl.duitang.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1672458737&t=8cd25c05d31666e6b7a38a2faf0c2eb4'
+        },
+        {   text:"我是很慢热的人，但是我保温性能很好，一旦热起来，就不会凉下去，比如喜欢你!",
+            imgUrl:'https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fimg.soogif.com%2FdOEQqBQiKjsojm09CFIzWH1BOiVojAGm.JPEG&refer=http%3A%2F%2Fimg.soogif.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1672457718&t=f65178f92994b379bdecea068145a0d7',
+            error:'https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fc-ssl.duitang.com%2Fuploads%2Fitem%2F202004%2F24%2F20200424113112_lkici.thumb.1000_0.gif&refer=http%3A%2F%2Fc-ssl.duitang.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1672458737&t=7a442d1e7e4e617a40b6d2e79a05d3d7'
+        },
+        {   text:"有些路很远，走下去会很累。可是，不走，会后悔",
+            imgUrl:'https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fimg95.699pic.com%2Felement%2F40112%2F7120.png_860.png&refer=http%3A%2F%2Fimg95.699pic.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1672458689&t=784531509de9c4cbf275668c29002b32',
+            error:'https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fc-ssl.duitang.com%2Fuploads%2Fitem%2F202004%2F05%2F20200405230226_ngogc.gif&refer=http%3A%2F%2Fc-ssl.duitang.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1672458756&t=4328ad43633c7a34fc20a6820226a417'
+        },
+        {   text:"我的生活，就像一杯白开水，但是你的出现，像是在里面偷偷加了一颗糖。",
+            imgUrl:'https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fpic.90sheji.com%2Fdesign%2F03%2F57%2F64%2F67%2F5d288da2a1065.png%21%2Ffwfh%2F2000x0%2Fclip%2F0x1328a0a0%2Fquality%2F90%2Funsharp%2Ftrue%2Fcompress%2Ftrue%2Fwatermark%2Furl%2FLzkwX3dhdGVyX3Y2LnBuZw%3D%3D%2Frepeat%2Ftrue&refer=http%3A%2F%2Fpic.90sheji.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1672458689&t=42722a904efc46da3dc3cc9a32af6d3e',
+            error:'https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fc-ssl.duitang.com%2Fuploads%2Fitem%2F201511%2F26%2F20151126230629_SRhac.thumb.400_0.jpeg&refer=http%3A%2F%2Fc-ssl.duitang.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1672458785&t=c0fbdcf86b3659e216aedc476ac2481c'
+        },
+        {   text:"都说婚姻是爱情的坟墓，可是自从见到你，我愿意将这块墓地开垦成花园。",
+            imgUrl:'https://gimg2.baidu.com/image_search/src=http%3A%2F%2Finews.gtimg.com%2Fnewsapp_bt%2F0%2F13578065299%2F641&refer=http%3A%2F%2Finews.gtimg.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1672458413&t=42116c059280d1b2de2a8a7ec587aab8',
+            error:'https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fp9.itc.cn%2Fimages01%2F20200912%2F97610b86db4e4152914e4830d5e286aa.jpeg&refer=http%3A%2F%2Fp9.itc.cn&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1672458785&t=1d91e1462884e92daefc21f86872cf22'
+        } 
+    ]
+
+    let error_text = [
+        "你不对劲啊","还来啊","救命啊，谁来救救我","再这样，我可就不开心了","怎么还不答应呢","再不答应地球就爆炸了","你是不是有别的狗了","要哭了","猛虎落泪","我不管，你就是得答应","爆炸吧","臭宝，你要是能看到这句话，你可就太坏了"
+    ]
+
+
+    var iYear = 2022
+	var iMonth = 8
+	var iDay = 3
+	var iHour = 9
+	var iMinute = 49
+	var iSecond = 0
+	//获取页面中h1标签
+	var h1 = document.querySelector('h1')
+	
+	//设计一个计时器，1秒钟运行一次
+	var timer = setInterval(function(){
+	    var now = new Date();//现在时间，获取时间戳
+	    //以前的时间（以前的时间戳）
+	    var ago = new Date(iYear,iMonth-1,iDay,iHour,iMinute,iSecond);
+	    //计算时差
+	    var ms = now - ago;
+	    //计算天数
+	    var day = parseInt(ms/(24 * 60 * 60 * 1000));
+	    //计算小时
+	    var hours = parseInt(ms % (24 * 60 * 60 * 1000) / (60 * 60 * 1000));
+	    //计算分钟
+    	var min = parseInt(ms % (24 * 60 * 60 * 1000) % (60 * 60 * 1000) / (60 * 1000));
+    	//计算秒
+    	var s = parseInt(ms % (24 * 60 * 60 * 1000) % (60 * 60 * 1000)%(60 * 1000) / 1000);
+    	//把结果反到<h1></h1>里
+	    h1.innerHTML = '我们在一起已经有' + day + '天' + hours + '小时' + min + '分' + s + '秒了！';
+   	},1000)
+    // 拒绝 
+    let refuse = document.getElementById("refuse")
+    let error_list = document.querySelector('.error_list')
+    // 遮罩
+    let mask = document.querySelector('.mask')
+    let mask_con = document.querySelector('.mask_con')
+    let myCon_index = 0
+    refuse.onclick = () =>{
+        if(myCon_index>=arr.length){
+            refuse.innerText = "别想拒绝我!"
+            let left_pos = Math.floor(Math.random()*80+1)
+            let top_pos = Math.floor(Math.random()*80+1)
+            console.log(left_pos)
+            console.log(top_pos)
+            refuse.style.position = 'fixed'
+            refuse.style.width = "100px"
+            refuse.style.left = left_pos +'%'
+            refuse.style.top = top_pos +'%'
+            return
+        }
+        // 显示遮罩
+        mask_con.innerHTML = `<strong>`+error_text[myCon_index]+`</strong>`+`<img src='`+arr[myCon_index].error+`' alt='' >`
+        mask.style.display = "block"
+        // 俩秒后隐藏
+        let timeOut = setTimeout(()=>{
+            mask.style.display = "none"
+            error_list.style.display = "block"
+            error_list.innerHTML = `<strong>`+arr[myCon_index].text+`</strong>`+`<img src='`+arr[myCon_index].imgUrl+`' alt='' >`
+            myCon_index +=1
+        },1500)
+    }
+    // 答应在一起
+    let together = document.getElementById("together")
+    together.onclick = () =>{
+        let item9 = document.querySelector('.item9')
+        mask_con.innerHTML = `<strong>你答应了哦，不许反悔哦</strong>`+`<img src='https://gimg2.baidu.com/image_search/src=http%3A%2F%2Ftva3.sinaimg.cn%2Flarge%2F006I1bcHly1g970n9infqj30j60j675j.jpg&refer=http%3A%2F%2Ftva3.sinaimg.cn&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1672464759&t=18aeee1b33d076f4b2b573953cc653df' alt='' >`
+        mask.style.display = "block"
+        // 俩秒后隐藏
+        let timeOut = setTimeout(()=>{
+            mask.style.display = "none"
+            error_list.style.display = "block"
+            item9.style.display = "none"
+            error_list.innerHTML = `<strong>你真好，我真爱你，可惜我不是诗人，说不出更动听的话了</strong>`+`<img src='https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fpic1.zhimg.com%2Fv2-63ae65716caafb5b153726ad2d7f295a_r.jpg%3Fsource%3D1940ef5c&refer=http%3A%2F%2Fpic1.zhimg.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1672464881&t=0cda4e1737cf58ca1783c2315effaefc' alt='' >`
+        },1500)
+        
+    }
+    var audio = document.getElementById('music1');
+
+    var mp3 = new Audio('112.wav');  // 创建音频对象
+    //var mp3 = new Audio('https://app.yinxiang.com/shard/s27/res/16ca753b-8fd9-431f-a8a7-21a5fb1fea16/112.wav');  // 创建音频对象
+    //mp3.play(); 
+    //audio.play();
+    //if(audio !== null) {
+    ////检测播放是否已暂停.audio.paused 在播放器播放时返回false.
+    ////alert(audio.paused);
+    //    if(audio.paused) {
+    //        audio.play(); //audio.play();// 这个就是播放
+    //    } else {
+    //        audio.pause(); // 这个就是暂停
+    //    }
+    //}
+</script>
+</html>
