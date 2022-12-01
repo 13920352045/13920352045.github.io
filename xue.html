@@ -1,0 +1,506 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no,viewport-fit=cover" name="viewport">
+    <title>雪容融</title>
+</head>
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+html{
+    font-size: calc(100vw/7.5);
+}
+body {
+    padding-top: 1rem;
+}
+.wrapper {
+    margin: 0 auto;
+    width: 4.77rem;
+    height: 7rem;
+    position: relative;
+    padding-top: 0.9rem;
+}
+.head {
+    width: 4.77rem;
+    height: 3.6rem;
+    background-color: #D9453B;
+    border-radius: 2rem;
+    transform: rotate(8deg);
+    position: relative;
+    overflow: hidden;
+    box-shadow: -0.94rem -0.34rem 0.34rem -0.82rem rgba(255, 255, 255, .8) inset;
+    position: relative;
+    z-index: 8;
+}
+.head .line {
+    width: 3rem;
+    height: 3.45rem;
+    border: 0.02rem solid rgba(221,188,28, .3);
+    border-radius: 0 3rem;
+    transform: rotate(42deg);
+    position: absolute;
+    left: 0.89rem;
+    top: 0;
+    z-index: 1;
+}
+.head::before {
+    content: '';
+    display: block;
+    width: 4.04rem;
+    height: 1.22rem;
+    position: absolute;
+    top: 0.17rem;
+    left: 0.43rem;
+    z-index: 5;
+    border-radius: 50%;
+    box-shadow: 0rem -0.29rem 0rem 0rem #D9453B, 0rem 0.01rem 0rem 0rem rgba(159,32,36, .5) inset;
+    transform: rotate(2deg);
+}
+.ring {
+    position: absolute;
+    top: 0.22rem;
+    left: 2.55rem;
+    z-index: 3;
+    transform: rotate(15deg);
+}
+.ring::before {
+    content: '';
+    display: block;
+    width: 0.16rem;
+    height: 0.16rem;
+    position: absolute;
+    left: 0.43rem;
+    top: 0.18rem;
+    z-index: 3;
+    transform: rotate(162deg);
+    border-radius: 50% 50% 0.73rem 0.29rem;
+    box-shadow: 0.01rem 0.04rem 0 0  rgba(237, 186, 0, .9);
+}
+.ring::after {
+    content: '';
+    display: block;
+    width: 0.16rem;
+    height: 0.16rem;
+    position: absolute;
+    left: 0.16rem;
+    top: 0.22rem;
+    z-index: 3;
+    transform: rotate(28deg);
+    border-radius: 0.3rem 0.35rem 50% 50%;
+    box-shadow: 0.01rem -0.04rem 0 0 rgba(237, 186, 0, .9);
+}
+.ring-c {
+    background-color: #fff;
+}
+.ring-w {
+    width: 0.3rem;
+    height: 0.3rem;
+    border-radius: 50% 50% 0.1rem 50%;
+}
+.ring-w1 {
+    width: 0.4rem;
+    height: 0.45rem;
+    border-radius: 50% 50% 0.1rem 0.1rem;
+    position: absolute;
+    top: -0.16rem;
+    left: 0.17rem;
+}
+.ring-w2 {
+    width: 0.32rem;
+    height: 0.32rem;
+    border-radius: 50%;
+    position: absolute;
+    top: -0.03rem;
+    left: 0.42rem;
+}
+.ring2 {
+    transform: rotate(13deg) scale(1.2);
+    z-index: 1;
+    left: 2.5rem;
+    top: 0.21rem;
+}
+.ring2 .ring-c {
+    background-color: rgba(237, 186, 0, .9);
+}
+.ice {
+    width: 1.5rem;
+    height: 0.5rem;
+    background-color: #fff;
+    box-shadow: 0rem -0.03rem 0.1rem 0rem rgba(207,228,226, .5);
+    transform: rotate(10deg);
+    position: absolute;
+    top: 0.52rem;
+    left: 1.99rem;
+    z-index: 10;
+    border-radius: 50%;
+}
+.ice::before {
+    content: '';
+    width: 1.5rem;
+    height: 0.31rem;
+    background-color: #fff;
+    position: absolute;
+    top: 0.21rem;
+    right: -0.78rem;
+    border-radius: 50%;
+    transform: rotate(21deg);
+    z-index: -1;
+    box-shadow: 0.16rem -0.02rem 0.09rem -0.09rem rgba(207,228,226, .9);
+}
+.ice::after {
+    content: '';
+    width: 1.14rem;
+    height: 0.34rem;
+    background-color: #fff;
+    position: absolute;
+    top: 0.16rem;
+    left: -0.49rem;
+    z-index: -1;
+    border-radius: 50%;
+    transform: rotate(-15deg);
+    box-shadow: -0.12rem -0.06rem 0.09rem -0.09rem rgb(207,228,226, .9);
+}
+.face {
+    width: 2.3rem;
+    height: 2.3rem;
+    border-radius: 2.3rem 0;
+    transform: rotate(49deg);
+    background-color: #fff;
+    position: absolute;
+    left: 0.65rem;
+    top: 0.94rem;
+    z-index: 5;
+}
+.face-c {
+    width: 2.03rem;
+    height: 0.75rem;
+    border-radius: 0.05rem;
+    background-color: #fff;
+    position: absolute;
+    top: 0.77rem;
+    left: -0.75rem;
+    transform: rotate(-62deg);
+}
+.face-c1 {
+    width: 1.13rem;
+    height: 1.11rem;
+    border-radius: 0.5rem;
+    background-color: #fff;
+    position: absolute;
+    top: 0.52rem;
+    left: -0.26rem;
+}
+.face-c2 {
+    width: 0.98rem;
+    height: 0.86rem;
+    border-radius: 0.5rem;
+    background-color: #fff;
+    position: absolute;
+    top: -0.42rem;
+    right: 0.03rem;
+}
+.face-c3 {
+    width: 0.83rem;
+    height: 0.69rem;
+    background-color: #fff;
+    border-radius: 100%;
+    position: absolute;
+    right: -0.3rem;
+    top: -0.26rem;
+}
+.face-c4 {
+    width: 0.83rem;
+    height: 0.69rem;
+    background-color: #fff;
+    border-radius: 100%;
+    position: absolute;
+    left: -0.08rem;
+    bottom: -0.19rem;
+}
+.face-c5 {
+    width: 0.8rem;
+    height: 0.8rem;
+    border-radius: 50%;
+    background-color: #fff;
+    position: absolute;
+    top: -0.03rem;
+    right: 0.69rem;
+}
+.eyes {
+    width: 1.8rem;
+    height: 0.35rem;
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    top: 0.9rem;
+    left: 0.05rem;
+    z-index: 3;
+    transform: rotate(-43deg);
+}
+.eye {
+    width: 0.24rem;
+    height: 0.31rem;
+    background-color: #211718;
+    border-radius: 50%;
+    position: relative;
+}
+.eye::before {
+    content: '';
+    display: block;
+    width: 0.04rem;
+    height: 0.06rem;
+    background-color: rgba(255, 255, 255, .8);
+    position: absolute;
+    top: 0.05rem;
+    left: 0.04rem;
+    border-radius: 0.05rem;
+    transform: rotate(30deg);
+}
+.cheeks {
+    width: 2.49rem;
+    height: 0.03rem;
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    top: 1.09rem;
+    left: -0.04rem;
+    z-index: 3;
+    transform: rotate(-47deg);
+}
+.cheek {
+    box-shadow: 0rem 0re 0.2rem 0.2rem rgba(212,161,178, 1);
+    width: 0.01rem;
+    height: 0.01rem;
+    border-radius: 50%;
+    background-color: rgba(212,161,178, 1);
+}
+.body {
+    width: 2.26rem;
+    height: 1.91rem;
+    background-color: #D9453B;
+    border-radius: 0.79rem 1rem 0.75rem 0.78rem;
+    margin-left: 1.20rem;
+    margin-top: -0.24rem;
+    transform: rotate(3deg);
+    position: relative;
+    z-index: 4;
+    -webkit-appearance: none;
+    box-shadow: -0.67rem -0.34rem 0.5rem -0.74rem rgba(255, 255, 255, .8) inset;
+    padding-top: 0.8rem;
+    box-sizing: border-box;
+}
+.body-c {
+    width: 0.3rem;
+    height: 0.3rem;
+    border-radius: 50%;
+    background-color: #fff;
+    position: relative;
+    margin: 0 auto;
+    box-shadow: 0rem 0rem 0.30rem 0.36rem #fff;
+}
+.text {
+    font-size: 0.12rem;
+    text-align: center;
+    font-weight: bold;
+    font-style: oblique;
+    position: relative;
+    top: -0.36rem;
+}
+.logo {
+    width: 0.42rem;
+    height: 0.24rem;
+    border-radius: 50%;
+    box-shadow: 0.06rem 0.03rem 0 0 #03A750;
+    position: absolute;
+    left: 1.52rem;
+    top: 1.37rem;
+    transform: rotate(24deg);
+    zoom: .7;
+}
+.logo::after {
+    content: '';
+    width: 0.42rem;
+    height: 0.24rem;
+    border-radius: 50%;
+    box-shadow: 0.06rem 0.03rem 0 0 #1281C6;
+    position: absolute;
+    left: -0.03rem;
+    top: 0.05rem;
+    transform: rotate(68deg);
+}
+.logo::before {
+    content: '';
+    width: 0.42rem;
+    height: 0.24rem;
+    border-radius: 50%;
+    box-shadow: 0.06rem 0.03rem 0 0 #ed344e;
+    position: absolute;
+    left: -0.11rem;
+    top: 0.05rem;
+    transform: rotate(129deg);
+}
+.arm-l {
+    width: 1rem;
+    height: 0.60rem;
+    background-color: #D9453B;
+    position: absolute;
+    left: 0.42rem;
+    top: 4.36rem;
+    z-index: 5;
+    border-radius: 0.25rem 0.37rem 0.25rem 0.53rem;
+    transform-origin: 1rem 0.30rem;
+    transform: rotate(21deg);
+    box-shadow: -0.05rem -0.17rem 0.38rem -0.20rem rgb(255, 255, 255, 80%) inset;
+    animation: 2s ease-in-out 1s infinite lRotate;
+}
+@keyframes lRotate {
+    0% { 
+        transform: rotate(21deg);
+    }
+    10% { 
+        transform: rotate(30deg);
+    }
+    20% { 
+        transform: rotate(14deg);
+        border-radius: 0.3rem 0.29rem 0.25rem 0.53rem;
+    }
+    30% { 
+        transform: rotate(28deg);
+    }
+    40%,50%,60%,70%,80%,90%,100% { 
+        transform: rotate(21deg);
+    }
+}
+.arm-r {
+    width: 1rem;
+    height: 0.60rem;
+    background-color: #D9453B;
+    position: absolute;
+    left: 3.03rem;
+    top: 4.66rem;
+    z-index: 1;
+    border-radius: 0.25rem 0.37rem 0.36rem 0.53rem;
+    transform: rotate(236deg);
+    box-shadow: -0.3rem -0.42rem 0.30rem -0.36rem rgb(255, 255, 255, .7) inset;
+}
+.scarf {
+    width: 2.45rem;
+    height: 0.27rem;
+    background-color: rgba(232,180,0, 1);
+    border-radius: 0.2rem;
+    position: absolute;
+    top: 4.42rem;
+    left: 1.15rem;
+    z-index: 4;
+    transform: rotate(3deg);
+}
+.scarf-c {
+    width: 0.18rem;
+    height: 0.6rem;
+    background: rgba(232,180,0, 1);
+    position: absolute;
+    top: 4.37rem;
+    left: 1.28rem;
+    z-index: 5;
+    transform: rotate(13deg);
+    border-top-left-radius: 0.05rem;
+}
+.scarf-c .line {
+    width: 0.02rem;
+    height: 0.22rem;
+    position: absolute;
+    bottom: 0;
+    left: 0.02rem;
+    background: #D9453B;
+}
+.scarf-c .line:nth-child(2) {
+    left: 0.6rem;
+}
+.scarf-c .line:nth-child(3) {
+    left: 0.10rem;
+}
+.scarf-c .line:nth-child(4) {
+    left: 0.14rem;
+}
+.leg-l {
+    width: 0.85rem;
+    height: 0.48rem;
+    background-color: #D9453B;
+    border-radius: 0.02rem 0.10rem 0.29rem 0.44rem;
+    position: absolute;
+    top: 5.95rem;
+    left: 1.45rem;
+    z-index: 4;
+}
+.leg-r {
+    width: 0.84rem;
+    height: 0.89rem;
+    background-color: #D9453B;
+    border-radius: 0.5rem 0.1rem 0.41rem 0.31rem;
+    position: absolute;
+    top: 5.61rem;
+    left: 2.42rem;
+    z-index: 3;
+    transform: rotate(9deg);
+    box-shadow: -0.88rem 0.02rem 0.4rem -0.86rem rgb(255, 255, 255, .7) inset;
+}
+</style>
+<body>
+    <div class="wrapper" id="xrr">
+        <div class="ring">
+            <div class="ring-c ring-w"></div>
+            <div class="ring-c ring-w1"></div>
+            <div class="ring-c ring-w2"></div>
+        </div>
+        <div class="ring ring2">
+            <div class="ring-c ring-w"></div>
+            <div class="ring-c ring-w1"></div>
+            <div class="ring-c ring-w2"></div>
+        </div>
+        <div class="ice"></div>
+        <div class="head">
+            <div class="face">
+                <div class="face-c"></div>
+                <div class="face-c1"></div>
+                <div class="face-c2"></div>
+                <div class="face-c3"></div>
+                <div class="face-c4"></div>
+                <div class="face-c5"></div>
+                <div class="eyes">
+                    <div class="eye eye-l"></div>
+                    <div class="eye eye-r"></div>
+                </div>
+                <div class="cheeks">
+                    <div class="cheek"></div>
+                    <div class="cheek"></div>
+                </div>
+            </div>
+            <div class="line"></div>
+        </div>
+
+        <div class="body">
+            <div class="body-c"></div>
+            <div class="text">BEIJING 2022</div>
+            <div class="logo"></div>
+            
+        </div>
+        <div class="arm arm-l"></div>
+        <div class="arm arm-r"></div>
+        <div class="scarf"></div>
+        <div class="scarf-c">
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+        </div>
+        <div class="leg leg-l"></div>
+        <div class="leg leg-r"></div>
+    </div>
+</body>
+</html>
