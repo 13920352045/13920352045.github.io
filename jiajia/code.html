@@ -180,7 +180,7 @@
 </style>
 </head>
 <body>
-  <h2 style="text-align: center;margin-bottom:20px;">吃什么好呢</h2>
+  <h2 style="text-align: center;margin-bottom:20px;">怎么惩罚呢</h2>
   <div class="wrapper">
     <div class="light"></div>
     <div class="light"></div>
@@ -195,59 +195,59 @@
     <div class="panel">
       <div class="sector">
         <div class="sector-inner">
-          <span>火锅</span>
+          <span>拖地一周</span>
         </div>
       </div>
       <div class="sector">
         <div class="sector-inner">
-          <span>烧烤</span>
+          <span>做饭一周</span>
         </div>
       </div>
       <div class="sector">
         <div class="sector-inner">
-          <span>炒菜</span>
+          <span>50个深蹲</span>
         </div>
       </div>
       <div class="sector">
         <div class="sector-inner">
-          <span>自助</span>
+          <span>礼物一个</span>
         </div>
       </div>
       <div class="sector">
         <div class="sector-inner">
-          <span>奶茶+蛋糕</span>
+          <span>100个俯卧撑</span>
         </div>
       </div>
       <div class="sector">
         <div class="sector-inner">
-          <span>烛光晚餐</span>
+          <span>解除惩罚</span>
         </div>
       </div>
       <div class="sector">
         <div class="sector-inner">
-          <span>佳佳做</span>
+          <span>答应李瑶要求</span>
         </div>
       </div>
       <div class="sector">
         <div class="sector-inner">
-          <span>憨憨做</span>
+          <span>吻10分钟</span>
         </div>
       </div>
       <div class="sector">
         <div class="sector-inner">
-          <span>蹭大宝</span>
+          <span>撒 娇</span>
         </div>
       </div>
       <div class="sector">
         <div class="sector-inner">
-          <span>零食</span>
+          <span>一起爬山</span>
         </div>
       </div>
       <div class="pointer">开始抽奖</div>
     </div>
   </div>
   <div class="result"></div>
-
+  <p style="text-align: center;"><a href="eat.html">去看看吃点什么</a></p>
   <script>
     let getEle = document.getElementsByClassName.bind(document);
     let pointer = getEle('pointer')[0];
@@ -255,8 +255,8 @@
     let lights = Array.prototype.slice.call(getEle('light'));
 
     let onRotation = false; // 记录当前是否正在旋转，如果正在旋转，就不能继续点击了
-    let reward = ['火锅', '烧烤', '炒菜', '自助', '奶茶+蛋糕', 
-    '烛光晚餐', '佳佳做', '憨憨做', '蹭大宝', '零食'];
+    let reward = ['拖地一周', '做饭一周', '50个深蹲', '礼物一个', '100个俯卧撑', 
+    '解除惩罚', '答应李瑶要求', '吻10分钟', '撒娇', '一起爬山'];
 
     // 根据随机角度获取奖励
     let getReward = (function() {
