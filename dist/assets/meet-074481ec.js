@@ -1,0 +1,1 @@
+import{_ as e,o as s,c as t,p as c}from"./index-7f7c9697.js";const o={},_={class:"leave"},a=c("div",{class:"header_title"},"我们还能再见面吧",-1),n=[a];function r(d,i){return s(),t("div",_,n)}const f=e(o,[["render",r]]);export{f as default};
