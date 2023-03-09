@@ -1,0 +1,1 @@
+import{_ as t}from"./header.vue_vue_type_script_setup_true_lang-07912cce.js";import{d as a,r as o,o as s,c as _,a as c,u as n}from"./index-d28f5801.js";const r={class:"leave"},f=a({__name:"leave",setup(p){const e=o({type:"love",tit:"我们分开的",time:"2021-5-4"});return(i,m)=>(s(),_("div",r,[c(t,{data_type:n(e)},null,8,["data_type"])]))}});export{f as default};
