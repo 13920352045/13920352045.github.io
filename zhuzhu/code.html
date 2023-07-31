@@ -177,6 +177,10 @@
     @keyframes twinkling {
       50% { background: transparent; }
     }
+    #timeInfo{
+      text-align: center;
+      margin-top: 6px;
+    }
 </style>
 </head>
 <body>
@@ -248,7 +252,27 @@
   </div>
   <div class="result"></div>
   <p style="text-align: center;"><a href="eat.html">去看看吃点什么</a></p>
+  <div id="timeInfo"></div>
   <script>
+    const myTime = (val) =>{
+      let str = ''
+      let now = new Date();//现在时间，获取时间戳
+      let pastTime = new Date(val);
+      let ms = now - pastTime;
+      var day = parseInt(ms/(24 * 60 * 60 * 1000));
+      var hours = parseInt(ms % (24 * 60 * 60 * 1000) / (60 * 60 * 1000));
+      var min = parseInt(ms % (24 * 60 * 60 * 1000) % (60 * 60 * 1000) / (60 * 1000));
+      var s = parseInt(ms % (24 * 60 * 60 * 1000) % (60 * 60 * 1000)%(60 * 1000) / 1000);
+      // specificTime.value = day + '天' + hours + '小时' + min + '分' + s + '秒了！';
+      str = day + '天' + hours + '小时' + min + '分' + s + '秒';
+      return str
+    }
+    const timeInfo = document.getElementById("timeInfo")
+    setInterval(()=>{
+      let time = myTime("2023-6-27")
+      timeInfo.innerText = "我们认识的第"+time
+    },1000)
+
     let getEle = document.getElementsByClassName.bind(document);
     let pointer = getEle('pointer')[0];
     let result = getEle('result')[0];
@@ -292,6 +316,8 @@
         result.style.display = 'block';
       }, 300);
     })
+
+    
 </script>
 </body>
 </html>
