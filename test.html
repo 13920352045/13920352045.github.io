@@ -43,7 +43,7 @@
             var div=document.createElement("div");
             const width = 50/(Math.random()+1)
             div.style.cssText="width:"+width+"px;height:"+width+"px;position:absolute;left:"+(50+(clientW-100)*Math.random())+"px;top:-20px";
-            div.style.transition="transform 2s linear "+Math.random()*4+"s";
+            div.style.transition="transform 5s linear "+Math.random()*4+"s";
             body.appendChild(div);
             arr.push(div);
         }
@@ -59,12 +59,12 @@
                     var that=this;
                     //再开启一个时间进程。
                     setTimeout(function(){
-                        that.style.transition="transform 2s linear "+Math.random()*4+"s";
+                        that.style.transition="transform 5s linear "+Math.random()*4+"s";
                         that.style.transform="translate(0,"+(clientH+100)+"px)";
                     })
                 })
             }
-        },50)
+        },250)
     }
 </script>
 </html>
