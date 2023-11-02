@@ -41,7 +41,7 @@
         //创建雨滴
         for(var i=0; i<360; i++){
             var div=document.createElement("div");
-            const width = 100/(Math.random()+1)
+            const width = 150/(Math.random()+1)
             div.style.cssText="width:"+width+"px;height:"+width+"px;position:absolute;left:"+(50+(clientW-100)*Math.random())+"px;top:-20px";
             div.style.transition="transform 5s linear "+Math.random()*4+"s";
             body.appendChild(div);
