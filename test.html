@@ -39,9 +39,9 @@
         var clientW=document.documentElement.clientWidth;
         var clientH=document.documentElement.clientHeight;
         //创建雨滴
-        for(var i=0; i<300; i++){
+        for(var i=0; i<360; i++){
             var div=document.createElement("div");
-            const width = 50/(Math.random()+1)
+            const width = 100/(Math.random()+1)
             div.style.cssText="width:"+width+"px;height:"+width+"px;position:absolute;left:"+(50+(clientW-100)*Math.random())+"px;top:-20px";
             div.style.transition="transform 5s linear "+Math.random()*4+"s";
             body.appendChild(div);
