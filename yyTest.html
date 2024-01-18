@@ -2,11 +2,124 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>love</title>
+    <title>Document</title>
 </head>
+<style>
+    html {
+      font-size: calc(100vw / 7.5);
+    }
+    .imageBox{
+        width: 100%;
+    }
+    /* 图片 */
+    .imageBox img{
+        display: block;
+        max-width: 100%;
+    }
+    /* 上传box */
+    .uploadBox{
+        width: 0.8rem;
+        height: 0.8rem;
+        border: 1px solid #ccc;
+        border-radius: 0.02rem;
+        overflow: hidden;
+        position: relative;
+    }
+    #myInput{
+        width: 100%;
+        height: 100%;
+        display: block;
+        font-size: 0.46rem;
+        opacity: 0;
+        position: absolute;
+        left: 0;
+        top: 0;
+    }
+    .uploadBox div{
+        width: 100%;
+        height: 100%;
+        line-height: 0.7rem;
+        text-align: center;
+        font-size: 0.32rem;
+        color: #999;
+    }
+    /* 按钮 */
+    .btnBox{
+        line-height: 0;
+    }
+    .myBtn{
+        width: 0.68rem;
+        background-color: #009fff;
+        border: none;
+        color: #fff;
+        padding: 0.06rem 0;
+        border-radius: 0.02rem;
+    }
+</style>
 <body>
-    杨洋是个大坏蛋啊！
+    <div class="uploadBox">
+        <input id="myInput" type="file">
+        <div>+</div>
+    </div>
+    <div class="btnBox">
+        <button onclick="uploadFile()" class="myBtn">点击上传</button>
+    </div>
+    <div class="imageBox">
+        <!-- <div class="wait_text">请稍等</div> -->
+        <img src="" alt="" id="myImage">
+    </div>
 </body>
+<script>
+    const uploadFile = ()=>{
+        const fileInput = document.getElementById('myInput')
+        if(fileInput.files[0]){
+            to_base64(fileInput.files[0])
+            console.log(fileInput.files[0])
+        }
+    }
+    
+    // 转换为base64
+    const to_base64 = async (file) =>{
+        let reader = new FileReader()
+        reader.addEventListener("load", async (e)=> {
+            const base64Image = e.target.result // 相当于reader.result 获取文件的Base64
+            // 回收内存
+            // callback && callback(base64Image) // 调用callback压缩
+            compress(base64Image, file)
+            reader = null
+        })
+        reader.readAsDataURL(file)
+    }
+    const compress = async (myUrl, file)=> {
+        let maxW = 1024;
+        let maxH = 1024;
+        let size = 1024*1024
+        let radio
+        const image = new Image()
+        const myImage = document.getElementById('myImage')
+        image.src = myUrl
+        if (file.size > size) { 
+            radio = image.naturalWidth / maxW
+            maxH = image.naturalHeight / radio
+            const canvas = document.createElement('canvas')
+            canvas.height = maxH;
+            canvas.width = maxW;
+            canvas.setAttribute("id", "_compress_")
+            canvas.style.visibility = 'hidden'
+            document.body.appendChild(canvas)
+            const ctx = canvas.getContext('2d')
+            ctx.clearRect(0, 0, maxW, maxH)
+            ctx.drawImage(image, 0, 0, maxW, maxH)
+            setTimeout(()=>{
+                const compressImage = canvas.toDataURL('image/jpeg', 0.8)
+                myImage.setAttribute("src",compressImage)
+                canvas.remove()
+            },100)
+        } else {
+            return myUrl
+        }
+    }
+
+</script>
 </html>
