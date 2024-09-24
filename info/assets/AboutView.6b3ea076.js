@@ -1,0 +1,1 @@
+import{_ as t,r,o as n,c as a,a as e,b as c,w as s}from"./index.a4836f9e.js";const _={};function l(u,i){const o=r("router-link");return n(),a("div",null,[e(" \u8FD9\u91CC\u662Fabout\u9875\u9762 "),c(o,{to:"/"},{default:s(()=>[e("home")]),_:1})])}const f=t(_,[["render",l]]);export{f as default};
