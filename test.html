@@ -1,70 +1,494 @@
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<style>
-   body,html{
-       width: 100%;
-       height: 100%;
-       padding: 0;
-       margin:0;
-       background: #000;
-       overflow: hidden;
-       position: absolute;
-   }
-   body div{
-    background-image: url(data:image/png;base64,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);
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
-   }
-</style>
-<body>
-
-</body>
-<script>
-    window.onload=function () {
-        var arr=[];
-        var body=document.getElementsByTagName("body")[0];
-        //模拟随风摆动的动作
-        var speed=5;
-        var t=setInterval(function () {
-            body.style.transition="transform 2s Linear";
-            speed+=5;
-            body.style.transform="rotate("+Math.sin(Math.PI/180*speed)*10+"deg)";
-        },50)
-        //获取屏幕宽度和高度
-        var clientW=document.documentElement.clientWidth;
-        var clientH=document.documentElement.clientHeight;
-        //创建雨滴
-        for(var i=0; i<360; i++){
-            var div=document.createElement("div");
-            const width = 150/(Math.random()+1)
-            div.style.cssText="width:"+width+"px;height:"+width+"px;position:absolute;left:"+(50+(clientW-100)*Math.random())+"px;top:-20px";
-            div.style.transition="transform 5s linear "+Math.random()*4+"s";
-            body.appendChild(div);
-            arr.push(div);
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <title>狗狗食量计算器</title>
+    <style>
+        :root {
+            --primary-color: #ff8c00;
+            --secondary-color: #f4f4f4;
+            --text-color: #333;
+            --light-text: #666;
+            --warning-color: #e74c3c;
+            --border-radius: 12px;
+            --box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
-        //让每个雨滴动起来
-        setTimeout(function () {
-            for(var j=0; j<arr.length; j++){
-                arr[j].style.transform="translate(0,"+clientH+"px)";
-                //添加一个监听事件，第一次动作完成以后实现循环
-                arr[j].addEventListener("webkitTransitionEnd",function () {
-                    //停止当前元素的运动
-                    this.style.transition="none";
-                    this.style.transform="translate(0,0)";
-                    var that=this;
-                    //再开启一个时间进程。
-                    setTimeout(function(){
-                        that.style.transition="transform 5s linear "+Math.random()*4+"s";
-                        that.style.transform="translate(0,"+(clientH+100)+"px)";
-                    })
-                })
+        
+        * {
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'PingFang SC', 'Helvetica Neue', Arial, sans-serif;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 15px;
+            background-color: var(--secondary-color);
+            color: var(--text-color);
+            line-height: 1.5;
+            -webkit-text-size-adjust: 100%;
+        }
+
+        .main-container {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        .content-container {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        .calculator, .food-info {
+            flex: 1;
+            background-color: var(--secondary-color);
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: var(--box-shadow);
+        }
+        .food-info {
+            max-height: 300px;
+            overflow-y: auto;
+        }
+        h1, h2 {
+            text-align: center;
+            color: black;
+            font-size: 24px;
+            margin-top: 5px;
+            margin-bottom: 20px;
+        }
+        .input-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            font-size: 18px;
+        }
+        input, select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+        .icon {
+            margin-right: 8px;
+            color: #ff8c00;
+        }        
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #ff8c00;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        .result-section {
+            display: none; /* 默认隐藏结果区域 */
+            background-color: white;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-top: 20px;
+        }
+        .result-card {
+            margin-bottom: 20px;
+        }
+        .result-title {
+            color: black;
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            text-align: center;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 10px;
+        }
+        .result-value {
+            font-size: 18px;
+            text-align: center;
+            margin: 10px 0;
+        }
+        .result-detail {
+            margin: 5px 0;
+            font-size: 14px;
+            text-align: center;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            border-radius: 12px;
+            margin-top: 20px;
+            overflow: hidden;
+        }
+        th, td {
+            padding: 10px;
+            text-align: center;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #ff8c00;
+            color: white;
+            font-weight: bold;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        tr:nth-child(odd):not(:first-child) {
+            background-color: #e0e0e0;
+        }
+        .warning {
+            color: #e74c3c;
+            font-size: 12px;
+            margin-top: 5px;
+        }
+        .note {
+            font-size: 12px;
+            color: #666;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        /* 响应式设计 - 小屏幕下堆叠布局 */
+        @media (max-width: 768px) {
+            .content-container {
+                flex-direction: column;
             }
-        },250)
-    }
-</script>
+            .calculator, .food-info {
+                width: 100%;
+            }
+            .food-info {
+                max-height: none;
+                overflow-y: visible;
+            }
+            body {
+                padding: 10px;
+            }
+            h1, h2 {
+                font-size: 20px;
+                margin-bottom: 15px;
+            }
+            input, select {
+                padding: 10px 12px;
+                font-size: 14px;
+            }
+            button {
+                padding: 12px;
+                font-size: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="calculator">
+        <h1>🐶 狗狗食量计算器</h1>
+
+        <div class="input-group">
+            <label><span class="icon">📍</span>请输入狗狗体重 (kg)</label>
+            <input type="number" id="weight" placeholder="请输入狗狗体重" step="0.1" min="0">
+        </div>
+        
+        <div class="input-group">
+            <label><span class="icon">📎</span>请下拉选择狗狗体重系数</label>
+            <select id="coefficient">
+                <option value="1.6">消瘦</option>
+                <option value="1.4">正常偏瘦</option>
+                <option value="1.2" selected>正常体重</option>
+                <option value="1.0">肥胖</option>
+            </select>
+        </div>
+        
+        <div class="input-group">
+            <label><span class="icon">📌</span>请输入狗粮代谢能 (kcal/kg)</label>
+            <input type="number" id="energy" placeholder="查看包装袋或询问客服可获取代谢能，注意单位换算！">
+        </div>
+        
+        <button onclick="calculate()">计算</button>
+    </div>
+
+    <div class="food-info">
+        <div class="table-container"></div>
+                <table>
+                    <tr>
+                        <th>品牌及类型</th>
+                        <th>蛋白质</th>
+                        <th>脂肪</th>
+                        <th>磷</th>
+                        <th>代谢能</th>
+                        <th>备注</th>
+                    </tr>
+                    <tr>
+                        <td>自然光环|成年健美火鸡(小鸡)</td>
+                        <td>28</td>
+                        <td>12</td>
+                        <td>0.5</td>
+                        <td>3470</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>自然光环|老年犬火鸡(老鸡)</td>
+                        <td>24</td>
+                        <td>12</td>
+                        <td>0.5</td>
+                        <td>3590</td>
+                        <td class="warning">有姜黄不适合肾衰、胆泥淤积</td>
+                    </tr>
+                    <tr>
+                        <td>渴望|老年犬</td>
+                        <td>38</td>
+                        <td>15</td>
+                        <td>1.1</td>
+                        <td>3630</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>渴望|低卡</td>
+                        <td>40</td>
+                        <td>12</td>
+                        <td>1.1</td>
+                        <td>3630</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>爱肯拿|老年犬</td>
+                        <td>33</td>
+                        <td>14</td>
+                        <td>1.1</td>
+                        <td>3325</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>爱肯拿|鸭肉梨</td>
+                        <td>31</td>
+                        <td>15</td>
+                        <td>0.9</td>
+                        <td>3393</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>纽顿|T28</td>
+                        <td>36</td>
+                        <td>17</td>
+                        <td>1</td>
+                        <td>3725</td>
+                        <td class="warning">有姜黄</td>
+                    </tr>
+                    <tr>
+                        <td>纽顿|T27</td>
+                        <td>32</td>
+                        <td>17</td>
+                        <td>0.9</td>
+                        <td>3780</td>
+                        <td class="warning">有姜黄</td>
+                    </tr>
+                    <tr>
+                        <td>lotus|沙丁鱼</td>
+                        <td>25</td>
+                        <td>14</td>
+                        <td></td>
+                        <td>3425</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>lotus|火鸡鲱鱼</td>
+                        <td>24</td>
+                        <td>13</td>
+                        <td></td>
+                        <td>3460</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>lotus|老年犬</td>
+                        <td>18</td>
+                        <td>9</td>
+                        <td></td>
+                        <td>3343</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>lotus|鸭肉甜薯</td>
+                        <td>30</td>
+                        <td>12</td>
+                        <td></td>
+                        <td>3559</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>rawz|鸭</td>
+                        <td>25</td>
+                        <td>12</td>
+                        <td>1</td>
+                        <td>3384</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>百利|理想体态</td>
+                        <td>35</td>
+                        <td>15</td>
+                        <td></td>
+                        <td>3590</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>安娜玛特|低脂</td>
+                        <td>30</td>
+                        <td>9</td>
+                        <td>0.5</td>
+                        <td>3242</td>
+                        <td class="warning">肾衰勿选，后升糖难把控新手勿选</td>
+                    </tr>
+                    <tr>
+                        <td>纽翠斯|鸡肉</td>
+                        <td>38</td>
+                        <td>18</td>
+                        <td>0.9</td>
+                        <td>3625</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>雅思|火鸡</td>
+                        <td>24</td>
+                        <td>14</td>
+                        <td>0.8</td>
+                        <td>3511</td>
+                        <td class="warning">大型犬性价比高</td>
+                    </tr>
+                    <tr>
+                        <td>欧恩焙</td>
+                        <td>24</td>
+                        <td>13</td>
+                        <td></td>
+                        <td>3641</td>
+                        <td class="warning">不同口味代谢能不同，具体咨询客服</td>
+                    </tr>
+                    <tr>
+                        <td>皇家|糖尿病处方粮</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>3366</td>
+                        <td class="warning">特别升糖不建议吃</td>
+                    </tr>
+                    <!-- 更多狗粮数据... -->
+                </table>
+                <p class="note">* 以上数据仅供参考，请以实际包装标注为准</p>
+            </div>
+    </div>
+
+        <div id="result" class="result-section">
+            <div class="result-card">
+                <div class="result-title">能量需求</div>
+                <div class="result-value" id="der-value">0 (kcal/天)</div>
+                <div class="result-detail" id="rer-detail">静止能量: 0 (kcal/天)</div>
+                <div class="result-detail">狗狗每日能量需求</div>
+            </div>
+
+            <div class="result-card">
+                <div class="result-title">狗粮喂食量</div>
+                <div class="result-value" id="homemade-value">全自制: 0 (g/天)</div>
+                <div class="result-value" id="dogfood-value">全狗粮: 0 (g/天)</div>
+                <div class="result-detail">狗狗每日狗粮投喂量</div>
+            </div>
+            
+            <div class="result-card">
+                <div class="result-title">餐量建议</div>
+                <div class="result-detail">(餐量比例为1.5: 1.5: 1) </div>
+                <table>
+                    <tr>
+                        <th>餐次</th>
+                        <th>狗粮(g)</th>
+                        <th>肉食(g)</th>
+                    </tr>
+                    <tr>
+                        <td>第一餐</td>
+                        <td id="meal1-dogfood">0</td>
+                        <td id="meal1-meat">0</td>
+                    </tr>
+                    <tr>
+                        <td>第二餐</td>
+                        <td id="meal2-dogfood">0</td>
+                        <td id="meal2-meat">0</td>
+                    </tr>
+                    <tr>
+                        <td>第三餐</td>
+                        <td id="meal3-dogfood">0</td>
+                        <td id="meal3-meat">0</td>
+                    </tr>
+                </table>
+            </div>
+            
+            <div class="note">
+                * 先定餐量后定剂量
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function calculate() {
+            // 获取输入值
+            const weight = parseFloat(document.getElementById('weight').value);
+            const coefficient = parseFloat(document.getElementById('coefficient').value);
+            const energy = parseFloat(document.getElementById('energy').value);
+            
+            if (!weight) {
+                alert('请输入狗狗体重');
+                return;
+            }
+            
+            if (!energy) {
+                alert('请输入狗粮代谢能');
+                return;
+            }
+            
+            // 静息能量需求 (RER)
+            const rer = 70 * Math.pow(weight, 0.75);
+
+            // 计算每日能量需求 (DER)
+            const der = rer * coefficient;
+            
+            // 计算全自制喂食量
+            const homemadeFood = der / 1.4;
+            
+            // 计算全狗粮喂食量
+            const dogFood = der / (energy / 1000);
+            
+            // 计算各餐食量
+            const meal1DogFood = Math.round(dogFood / 2 / 8 * 3);
+            const meal2DogFood = Math.round(dogFood / 2 / 8 * 3);
+            const meal3DogFood = Math.round(dogFood / 2 / 8 * 2);
+            
+            const meal1Meat = Math.round(dogFood / 8 * 3);
+            const meal2Meat = Math.round(dogFood / 8 * 3);
+            const meal3Meat = Math.round(dogFood / 8 * 2);
+            
+            // 更新结果
+            document.getElementById('der-value').textContent = Math.round(der) + ' (kcal/天)';
+            document.getElementById('rer-detail').textContent = '静止能量：' + Math.round(rer) + ' (kcal/天)';
+            document.getElementById('homemade-value').textContent = '全自制：' + Math.round(homemadeFood) + ' (g/天)';
+            document.getElementById('dogfood-value').textContent = '全狗粮：' + Math.round(dogFood) + ' (g/天)';
+            
+            document.getElementById('meal1-dogfood').textContent = meal1DogFood;
+            document.getElementById('meal1-meat').textContent = meal1Meat;
+            document.getElementById('meal2-dogfood').textContent = meal2DogFood;
+            document.getElementById('meal2-meat').textContent = meal2Meat;
+            document.getElementById('meal3-dogfood').textContent = meal3DogFood;
+            document.getElementById('meal3-meat').textContent = meal3Meat;
+            
+            // 显示结果
+            document.getElementById('result').style.display = 'block';
+
+            // 滚动到结果区域
+            document.getElementById('result').scrollIntoView({ behavior: 'smooth' });
+        }
+    </script>
+</body>
 </html>
